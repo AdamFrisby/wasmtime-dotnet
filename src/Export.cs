@@ -90,7 +90,8 @@ namespace Wasmtime
                 }
                 else
                 {
-                    Name = Marshal.PtrToStringUTF8((IntPtr)name->data, (int)name->size);
+                    
+                    Name = Marshal.PtrToStringAnsi((IntPtr)name->data, (int)name->size);
                 }
             }
         }

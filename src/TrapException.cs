@@ -1,3 +1,4 @@
+#nullable enable
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
@@ -109,7 +110,7 @@ namespace Wasmtime
                     byteSpan = byteSpan.Slice(0, indexOfNull);
                 }
 
-                var message = Encoding.UTF8.GetString(byteSpan);
+                var message = Encoding.UTF8.GetString(byteSpan.ToArray());
                 bytes.Dispose();
 
                 Native.wasm_trap_trace(trap, out var frames);

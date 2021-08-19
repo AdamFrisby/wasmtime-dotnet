@@ -1,3 +1,4 @@
+#nullable enable
 using System;
 using System.Runtime.InteropServices;
 using Microsoft.Win32.SafeHandles;
@@ -418,7 +419,7 @@ namespace Wasmtime
             public static extern void wasmtime_config_dynamic_memory_guard_size_set(Handle config, ulong size);
 
             [DllImport(Engine.LibraryName)]
-            public static extern IntPtr wasmtime_config_cache_config_load(Handle config, [MarshalAs(UnmanagedType.LPUTF8Str)] string? path);
+            public static extern IntPtr wasmtime_config_cache_config_load(Handle config, [MarshalAs(UnmanagedType.LPStr)] string? path);
         }
 
         private readonly Handle handle;

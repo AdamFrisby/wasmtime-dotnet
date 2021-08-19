@@ -113,7 +113,7 @@ namespace Wasmtime
         /// <returns>Returns the string read from memory.</returns>
         public string ReadString(IStore store, int address, int length)
         {
-            return Encoding.UTF8.GetString(GetSpan(store).Slice(address, length));
+            return Encoding.UTF8.GetString(GetSpan(store).Slice(address, length).ToArray());
         }
 
         /// <summary>
@@ -131,7 +131,7 @@ namespace Wasmtime
                 throw new InvalidOperationException("string is not null terminated");
             }
 
-            return Encoding.UTF8.GetString(slice.Slice(0, terminator));
+            return Encoding.UTF8.GetString(slice.Slice(0, terminator).ToArray());
         }
 
         /// <summary>
@@ -143,7 +143,9 @@ namespace Wasmtime
         /// <return>Returns the number of bytes written.</return>
         public int WriteString(IStore store, int address, string value)
         {
-            return Encoding.UTF8.GetBytes(value, GetSpan(store).Slice(address));
+            var b = Encoding.UTF8.GetBytes(value);
+            b.CopyTo(GetSpan(store).Slice(address));
+            return b.Length;
         }
 
         /// <summary>

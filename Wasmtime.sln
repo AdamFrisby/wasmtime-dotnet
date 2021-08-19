@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wasmtime", "src\Wasmtime.cs
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wasmtime.Tests", "tests\Wasmtime.Tests.csproj", "{8A200114-1D0B-4F90-9F82-1FFE47C207DD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestWasmApp", "TestWasmApp\TestWasmApp.csproj", "{8FE6ECE6-605E-4C35-A261-35186CC508CD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{8A200114-1D0B-4F90-9F82-1FFE47C207DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8A200114-1D0B-4F90-9F82-1FFE47C207DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8A200114-1D0B-4F90-9F82-1FFE47C207DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FE6ECE6-605E-4C35-A261-35186CC508CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FE6ECE6-605E-4C35-A261-35186CC508CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FE6ECE6-605E-4C35-A261-35186CC508CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FE6ECE6-605E-4C35-A261-35186CC508CD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

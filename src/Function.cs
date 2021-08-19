@@ -1,3 +1,4 @@
+#nullable enable
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -759,8 +760,9 @@ namespace Wasmtime
 
             if (hasReturn)
             {
-                parameterTypes = type.GenericTypeArguments[0..^1];
-                returnType = type.GenericTypeArguments[^1];
+                var args = type.GenericTypeArguments;
+                parameterTypes = args.AsSpan(0, args.Length - 1);
+                returnType = args[^1];
             }
             else
             {
@@ -823,23 +825,13 @@ namespace Wasmtime
 
                 // NOTE: reflection is extremely slow for invoking methods. in the future, perhaps this could be replaced with
                 // source generators, system.linq.expressions, or generate IL with DynamicMethods or something
-                var result = callback.Method.Invoke(callback.Target, BindingFlags.DoNotWrapExceptions, null, invokeArgs, null);
+                var result = callback.Method.Invoke(callback.Target, BindingFlags.Default, null, invokeArgs, null);
 
                 if (resultKinds.Count > 0)
                 {
-                    var tuple = result as ITuple;
-                    if (tuple is null)
-                    {
-                        results[0] = Value.FromObject(result, resultKinds[0]);
-                    }
-                    else
-                    {
-                        for (int i = 0; i < tuple.Length; ++i)
-                        {
-                            results[i] = Value.FromObject(tuple[i], resultKinds[i]);
-                        }
-                    }
+                    results[0] = Value.FromObject(result, resultKinds[0]);
                 }
+
                 return IntPtr.Zero;
             }
             catch (Exception ex)

@@ -1,3 +1,4 @@
+#nullable enable
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -467,7 +468,7 @@ namespace Wasmtime
             [return: MarshalAs(UnmanagedType.I1)]
             public static extern bool wasi_config_set_stdin_file(
                 Handle config,
-                [MarshalAs(UnmanagedType.LPUTF8Str)] string path
+                [MarshalAs(UnmanagedType.LPStr)] string path
             );
 
             [DllImport(Engine.LibraryName)]
@@ -477,7 +478,7 @@ namespace Wasmtime
             [return: MarshalAs(UnmanagedType.I1)]
             public static extern bool wasi_config_set_stdout_file(
                 Handle config,
-                [MarshalAs(UnmanagedType.LPUTF8Str)] string path
+                [MarshalAs(UnmanagedType.LPStr)] string path
             );
 
             [DllImport(Engine.LibraryName)]
@@ -487,7 +488,7 @@ namespace Wasmtime
             [return: MarshalAs(UnmanagedType.I1)]
             public static extern bool wasi_config_set_stderr_file(
                 Handle config,
-                [MarshalAs(UnmanagedType.LPUTF8Str)] string path
+                [MarshalAs(UnmanagedType.LPStr)] string path
             );
 
             [DllImport(Engine.LibraryName)]
@@ -497,8 +498,8 @@ namespace Wasmtime
             [return: MarshalAs(UnmanagedType.I1)]
             public static extern bool wasi_config_preopen_dir(
                 Handle config,
-                [MarshalAs(UnmanagedType.LPUTF8Str)] string path,
-                [MarshalAs(UnmanagedType.LPUTF8Str)] string guestPath
+                [MarshalAs(UnmanagedType.LPStr)] string path,
+                [MarshalAs(UnmanagedType.LPStr)] string guestPath
             );
         }
 
